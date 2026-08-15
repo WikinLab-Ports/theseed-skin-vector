@@ -15,8 +15,8 @@
                     <!-- <div id="mv-revision-nav"></div> -->
                 </div>
                 </div>
-                <div v-if="$store.state.session.member?.user_document_discuss" class="usermessage theseed-user-document-discuss-alert" data-id="{{ member.username }}-{{ user_document_discuss }}">현재 진행중인
-                    <nuxt-link :to="doc_action_link(user_doc($store.state.session.member.username), 'discuss')">사용자토론</nuxt-link>이 있습니다.
+                <div v-if="$store.state.session.user_document_discuss" class="usermessage theseed-user-document-discuss-alert" :data-id="$store.state.session.account.name + '-' + $store.state.session.user_document_discuss">현재 진행중인
+                    <nuxt-link :to="doc_action_link(user_doc($store.state.session.account.name), 'discuss')">사용자토론</nuxt-link>이 있습니다.
                 </div>
                 <div id="mw-content-text" class="mw-content-ltr wiki-article" dir="ltr">
                     <nuxt />
@@ -29,18 +29,18 @@
             <div id="mw-head">
                 <div id="p-personal" role="navigation" aria-labelledby="p-personal-label">
                     <h3 id="p-personal-label">개인 도구</h3>
-                    <ul v-if="$store.state.session.member">
+                    <ul v-if="$store.state.session.account.type === 1">
                         <li id="pt-userpage">
-                            <nuxt-link :to="doc_action_link(user_doc($store.state.session.member.username), 'w')" title="내 사용자 문서 [Alt+Shift+.]" accesskey=".">{{ $store.state.session.member.username }}</nuxt-link>
+                            <nuxt-link :to="doc_action_link(user_doc($store.state.session.account.name), 'w')" title="내 사용자 문서 [Alt+Shift+.]" accesskey=".">{{ $store.state.session.account.name }}</nuxt-link>
                         </li>
                         <li id="pt-mytalk">
-                            <nuxt-link :to="doc_action_link(user_doc($store.state.session.member.username), 'discuss')" title="내 토론 [Alt+Shift+n]" accesskey="n">토론</nuxt-link>
+                            <nuxt-link :to="doc_action_link(user_doc($store.state.session.account.name), 'discuss')" title="내 토론 [Alt+Shift+n]" accesskey="n">토론</nuxt-link>
                         </li>
                         <li id="pt-preferences">
-                            <nuxt-link to="/member/mypage" title="계정설정">토론</nuxt-link>
+                            <nuxt-link to="/member/mypage" title="계정설정">설정</nuxt-link>
                         </li>
                         <li id="pt-mycontris">
-                            <nuxt-link :to="contribution_author_link($store.state.session.member.username)" title="내 기여 목록 [Alt+Shift+y]" accesskey="y">기여</nuxt-link>
+                            <nuxt-link :to="contribution_link($store.state.session.account.uuid)" title="내 기여 목록 [Alt+Shift+y]" accesskey="y">기여</nuxt-link>
                         </li>
                         <li id="pt-watchlist">
                             <nuxt-link to="/member/starred_documents" title="주시문서 목록 [Alt+Shift+l]" accesskey="l">주시문서 목록</nuxt-link>
@@ -51,8 +51,8 @@
                     </ul>
                     <ul v-else>
                         <li id="pt-anonuserpage">로그인하지 않음</li>
-                        <li id="pt-anoncontribs">
-                            <nuxt-link :to="contribution_ip_link($store.state.session.ip)" title="이 IP 주소의 편집 목록 [Alt+Shift+y]" accesskey="y">기여</nuxt-link>
+                        <li v-if="$store.state.session.account.uuid" id="pt-anoncontribs">
+                            <nuxt-link :to="contribution_link($store.state.session.account.uuid)" title="이 IP 주소의 편집 목록 [Alt+Shift+y]" accesskey="y">기여</nuxt-link>
                         </li>
                         <li id="pt-createaccount">
                             <nuxt-link to="/member/signup" title="계정을 만들고 로그인하는 것이 좋습니다; 하지만, 필수는 아닙니다">계정 만들기</nuxt-link>
@@ -71,14 +71,14 @@
                                     <nuxt-link :to="doc_action_link($store.state.page.data.document, 'w')">문서</nuxt-link>
                                 </span>
                             </li>
-                            <li :class="{ 'selected': $store.state.page.startsWith('thread') }">
+                            <li :class="{ 'selected': $store.state.page.viewName.startsWith('thread') }">
                                 <span>
                                     <nuxt-link :to="doc_action_link($store.state.page.data.document, 'discuss')">토론</nuxt-link>
                                 </span>
                             </li>
                             <li v-if="$store.state.page.data.user">
                                 <span>
-                                    <nuxt-link :to="contribution_author_link($store.state.page.data.document.title)">기여내역</nuxt-link>
+                                    <nuxt-link :to="contribution_link($store.state.page.data.user.uuid)">기여내역</nuxt-link>
                                 </span>
                             </li>
                         </ul>
@@ -103,7 +103,7 @@
                                 </li>
                                 <li id="ca-edit" class="collapsible" :class="{ selected: $store.state.page.viewName === 'edit' }">
                                     <span>
-                                        <nuxt-link :to="doc_action_link($store.state.page.data.document, 'edit')" title="이 문서 편집하기 [Alt+Shift+e]" accesskey="e">읽기</nuxt-link>
+                                        <nuxt-link :to="doc_action_link($store.state.page.data.document, 'edit')" title="이 문서 편집하기 [Alt+Shift+e]" accesskey="e">편집</nuxt-link>
                                     </span>
                                 </li>
                                 <li id="ca-history" class="collapsible" :class="{ selected: $store.state.page.viewName === 'history' }">
@@ -139,7 +139,7 @@
                                     </li>
                                     <li class="collapsible" style="display: list-item;">
                                         <span>
-                                            <nuxt-link :to="doc_action_link($store.state.page.data.document, 'move')" title="ACL을 봅니다.">ACL</nuxt-link>
+                                            <nuxt-link :to="doc_action_link($store.state.page.data.document, 'acl')" title="ACL을 봅니다.">ACL</nuxt-link>
                                         </span>
                                     </li>
                                 </ul>
@@ -185,7 +185,7 @@
                                 <nuxt-link :to="doc_action_link($store.state.page.data.document, 'backlink')" title="여기를 가리키는 모든 위키 문서의 목록 [Alt+Shift+j]" accesskey="j">여기를 가리키는 문서</nuxt-link>
                             </li>
                             <li v-if="$store.state.page.data.user">
-                                <nuxt-link :to="contribution_author_link($store.state.page.data.document.title)" title="이 사용자의 기여 목록">사용자 기여</nuxt-link>
+                                <nuxt-link :to="contribution_link($store.state.page.data.user.uuid)" title="이 사용자의 기여 목록">사용자 기여</nuxt-link>
                             </li>
                             <li>
                                 <nuxt-link to="/Upload" title="파일 올리기 [Alt+Shift+u]" accesskey="u">파일 올리기</nuxt-link>
@@ -221,7 +221,7 @@
             <div id="footer" role="contentinfo">
                 <ul v-if="$store.state.page.viewName === 'wiki' && $store.state.page.data.date" id="footer-info">
                     <li id="footer-info-lastmod">이 문서는 <local-date :date="$store.state.page.data.date" />에 마지막으로 편집되었습니다.</li>
-                    <li id="footer-info-copyright">{{ $store.state.config['wiki.copyright_text'] }}</li>
+                    <li id="footer-info-copyright" v-html="$store.state.config['wiki.copyright_text']"></li>
                 </ul>
                 <ul id="footer-places">
                     <li>
@@ -273,7 +273,9 @@ export default {
         searchForm
     },
     computed: {
-        logoUrl: this.$store.state.config['wiki.logo_url'] ? `url(${this.$store.state.config['wiki.logo_url']})`: `url(${require('./static/images/wiki-logo.svg')})`
+        logoUrl() {
+            return this.$store.state.config['wiki.logo_url'] ? `url(${this.$store.state.config['wiki.logo_url']})`: `url(${require('./static/images/wiki-logo.svg')})`;
+        }
     }
 }
 </script>
