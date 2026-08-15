@@ -510,9 +510,9 @@ div.emptyPortlet {
 }
 ul {
   list-style-type: disc;
-  list-style-image: /* @embed */ url('/skins/vector/images/bullet-icon.svg');
+  list-style-image: /* @embed */ url('../images/bullet-icon.svg');
   /* Fallback to PNG bullet for IE 8 and below using CSS hack */
-  list-style-image: /* @embed */ url('/skins/vector/images/bullet-icon.png') \9;
+  list-style-image: /* @embed */ url('../images/bullet-icon.png') \9;
 }
 pre,
 .mw-code {
@@ -556,8 +556,8 @@ pre,
   background-repeat: no-repeat;
   /* SVG support using a transparent gradient to guarantee cross-browser
 	 * compatibility (browsers able to understand gradient syntax support also SVG) */
-  background-image: url('/skins/vector/images/user-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/user-icon.svg');
+  background-image: url('../images/user-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/user-icon.svg');
   padding-left: 15px !important;
 }
 /* Show "Not logged in" text in gray */
@@ -604,7 +604,7 @@ div#simpleSearch {
   border: solid 1px #aaa;
   color: #000;
   background-color: #fff;
-  background-image: /* @embed */ url('/skins/vector/images/search-fade.png');
+  background-image: /* @embed */ url('../images/search-fade.png');
   background-position: top left;
   background-repeat: repeat-x;
 }
@@ -672,8 +672,8 @@ div#simpleSearch #mw-searchButton {
   overflow: hidden;
 }
 div#simpleSearch #searchButton {
-  background-image: url('/skins/vector/images/search-ltr.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/search-ltr.svg');
+  background-image: url('../images/search-ltr.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/search-ltr.svg');
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -692,7 +692,7 @@ div.vectorTabs {
   /* @noflip */
   float: left;
   height: 2.5em;
-  background-image: /* @embed */ url('/skins/vector/images/tab-break.png');
+  background-image: /* @embed */ url('../images/tab-break.png');
   background-position: bottom left;
   background-repeat: no-repeat;
   padding-left: 1px;
@@ -705,7 +705,7 @@ div.vectorTabs ul {
   list-style-image: none;
   margin: 0;
   padding: 0;
-  background-image: /* @embed */ url('/skins/vector/images/tab-break.png');
+  background-image: /* @embed */ url('../images/tab-break.png');
   background-position: right bottom;
   background-repeat: no-repeat;
   /* IGNORED BY IE6 which doesn't support child selector */
@@ -720,7 +720,7 @@ div.vectorTabs ul li {
   margin: 0;
   padding: 0;
   background-color: #f3f3f3;
-  background-image: /* @embed */ url('/skins/vector/images/tab-normal-fade.png');
+  background-image: /* @embed */ url('../images/tab-normal-fade.png');
   background-position: bottom left;
   background-repeat: repeat-x;
   white-space: nowrap;
@@ -736,7 +736,7 @@ div.vectorTabs li.new a:visited {
   color: #a55858;
 }
 div.vectorTabs li.selected {
-  background-image: /* @embed */ url('/skins/vector/images/tab-current-fade.png');
+  background-image: /* @embed */ url('../images/tab-current-fade.png');
 }
 div.vectorTabs li.selected a,
 div.vectorTabs li.selected a:visited {
@@ -762,7 +762,7 @@ div.vectorTabs li > a {
 }
 div.vectorTabs span {
   display: inline-block;
-  background-image: /* @embed */ url('/skins/vector/images/tab-break.png');
+  background-image: /* @embed */ url('../images/tab-break.png');
   background-position: bottom right;
   background-repeat: no-repeat;
   height: 100%;
@@ -795,7 +795,7 @@ body.rtl div.vectorMenu {
 div#mw-head div.vectorMenu h3 {
   /* @noflip */
   float: left;
-  background-image: /* @embed */ url('/skins/vector/images/tab-break.png');
+  background-image: /* @embed */ url('../images/tab-break.png');
   background-repeat: no-repeat;
   background-position: bottom right;
   font-size: 1em;
@@ -811,14 +811,14 @@ div.vectorMenu h3 span {
   padding-right: 20px;
   font-weight: normal;
   color: #444;
-  background-image: url('/skins/vector/images/arrow-down-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/arrow-down-icon.svg');
+  background-image: url('../images/arrow-down-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/arrow-down-icon.svg');
   background-position: 100% 100%;
   background-repeat: no-repeat;
 }
 div.vectorMenuFocus h3 span {
-  background-image: url('/skins/vector/images/arrow-down-focus-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/arrow-down-focus-icon.svg');
+  background-image: url('../images/arrow-down-focus-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/arrow-down-focus-icon.svg');
 }
 div.vectorMenu div.menu {
   min-width: 100%;
@@ -950,27 +950,27 @@ div.vectorMenu li.selected a:visited {
   background-position: 5px 60%;
 }
 #ca-unwatch.icon a {
-  background-image: url('/skins/vector/images/unwatch-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/unwatch-icon.svg');
+  background-image: url('../images/unwatch-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/unwatch-icon.svg');
 }
 #ca-watch.icon a {
-  background-image: url('/skins/vector/images/watch-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/watch-icon.svg');
+  background-image: url('../images/watch-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/watch-icon.svg');
 }
 #ca-unwatch.icon a:hover,
 #ca-unwatch.icon a:focus {
-  background-image: url('/skins/vector/images/unwatch-icon-hl.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/unwatch-icon-hl.svg');
+  background-image: url('../images/unwatch-icon-hl.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/unwatch-icon-hl.svg');
 }
 #ca-watch.icon a:hover,
 #ca-watch.icon a:focus {
-  background-image: url('/skins/vector/images/watch-icon-hl.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/watch-icon-hl.svg');
+  background-image: url('../images/watch-icon-hl.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/watch-icon-hl.svg');
 }
 #ca-unwatch.icon a.loading,
 #ca-watch.icon a.loading {
-  background-image: url('/skins/vector/images/watch-icon-loading.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/watch-icon-loading.svg');
+  background-image: url('../images/watch-icon-loading.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/watch-icon-loading.svg');
   -webkit-animation: rotate 700ms infinite linear;
   -moz-animation: rotate 700ms infinite linear;
   animation: rotate 700ms infinite linear;
@@ -997,7 +997,7 @@ div.vectorMenu li.selected a:visited {
   background-position: bottom left;
   background-repeat: repeat-x;
   /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-  background-image: url(/skins/vector/images/page-fade.png );
+  background-image: url(../images/page-fade.png );
   background-color: #f6f6f6;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fff), color-stop(100%, #f6f6f6));
   background-image: -webkit-linear-gradient(top, #fff 50%, #f6f6f6 100%);
@@ -1079,7 +1079,7 @@ div#mw-panel div.portal h3 {
 div#mw-panel div.portal div.body {
   margin-left: 0.5em;
   padding-top: 0;
-  background-image: /* @embed */ url('/skins/vector/images/portal-break.png');
+  background-image: /* @embed */ url('../images/portal-break.png');
   background-repeat: no-repeat;
 }
 div#mw-panel div.portal div.body ul {
@@ -1157,87 +1157,13 @@ body.ltr div#footer #footer-places {
 .mw-body-content .wiki-link-external {
   background-position: center right;
   background-repeat: no-repeat;
-  background-image: url('/skins/vector/images/external-link-ltr-icon.png');
-  background-image: linear-gradient(transparent, transparent), /* @embed */ url('/skins/vector/images/external-link-ltr-icon.svg');
+  background-image: url('../images/external-link-ltr-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('../images/external-link-ltr-icon.svg');
   padding-right: 13px;
 }
 .mw-body-content .wiki-link-external:before {
   content: '' !important;
   padding: 0 !important;
-}
-.res-wrapper {
-  display: block;
-  margin: 30px 0px;
-}
-@keyframes head-loading {
-  from {
-    background-color: #747474;
-  }
-  to {
-    background-color: #cacaca;
-  }
-}
-@keyframes body-loading {
-  from {
-    background-color: #e2d7d7;
-  }
-  to {
-    background-color: #f3f3f3;
-  }
-}
-.res-wrapper.res-loading[data-visible="true"] .r-head {
-  animation: head-loading 0.5s infinite;
-}
-.res-wrapper.res-loading[data-visible="true"] .r-body {
-  animation: body-loading 0.5s infinite;
-}
-.topic-discuss a.more-box {
-  padding: 10px;
-  margin-left: 20px;
-  border: 1px solid black;
-}
-.res .r-head {
-  border: 1px #525252 solid;
-  border-bottom: 1px #525252 dotted;
-  padding: 10px 12px 5px 15px;
-  background: #aaaaaa;
-}
-.res .r-head.first-author {
-  background: #70cc93;
-}
-.res .r-head .pull-right {
-  float: right;
-}
-.res .r-body {
-  border: 1px #525252 solid;
-  border-top: none;
-  padding: 5px 10px 10px 15px;
-  background: #e8e8e8;
-}
-.res .r-body.r-hidden-body {
-  background: #332636;
-  color: white;
-}
-.res .r-body.r-hidden-body .hidden-content {
-  display: none;
-}
-.res .r-body.r-hidden-body:hover {
-  background: #1a131b;
-}
-.res .combo.admin-menu {
-  padding: 5px;
-}
-.res.res-type-status .r-body {
-  background: orange;
-}
-textarea#textInput,
-iframe#previewFrame {
-  height: 500px;
-  width: 100%;
-}
-iframe#previewFrame {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: .25rem;
 }
 /* fix breadcrumb being in multiple liens in some pages such as RecentChanges/RecenctDiscuss */
 .mw-body-content ol.breadcrumb > li {
