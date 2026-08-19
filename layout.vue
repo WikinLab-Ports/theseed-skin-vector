@@ -255,7 +255,7 @@ import LocalDate from '~/components/localDate';
 import Setting from '~/components/setting';
 import searchForm from './searchForm';
 
-if (process.browser) {
+if (typeof window !== 'undefined') {
     try {
         require("./static/js/jquery.min.js");
         require("./static/js/jquery-ui.min.js");
